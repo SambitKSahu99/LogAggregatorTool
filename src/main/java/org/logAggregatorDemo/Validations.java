@@ -8,7 +8,9 @@ public class Validations {
         return new File(path).isDirectory();
     }
 
-    public static void validateFile() {
+    public static boolean validateFile(String path) {
+        return path.endsWith(".log");
+
 
     }
 }
