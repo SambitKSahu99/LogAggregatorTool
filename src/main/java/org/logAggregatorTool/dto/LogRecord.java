@@ -12,16 +12,6 @@ public class LogRecord {
     String outputFileName;
     String errorMessage;
 
-    public LogRecord(String logFileFolderPath, int totalFiles, List<String> nameOfFiles, String dateOfOperation, String result, String outputFileName, String errorMessage) {
-        this.logFileFolderPath = logFileFolderPath;
-        this.totalFiles = totalFiles;
-        this.nameOfFiles = nameOfFiles;
-        this.dateOfOperation = dateOfOperation;
-        this.result = result;
-        this.outputFileName = outputFileName;
-        this.errorMessage = errorMessage;
-    }
-
     public LogRecord() {
     }
 
