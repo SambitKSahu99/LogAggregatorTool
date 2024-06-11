@@ -1,20 +1,18 @@
-package org.logAggregatorDemo;
+package org.logAggregatorTool.dto;
+
+import java.util.List;
 
 public class LogRecord {
 
     String logFileFolderPath;
     int totalFiles;
-    String nameOfFiles;
+    List<String> nameOfFiles;
     String dateOfOperation;
     String result;
     String outputFileName;
     String errorMessage;
 
-    public LogRecord() {
-    }
-
-    public LogRecord
-            (String logFileFolderPath, int totalFiles, String nameOfFiles, String dateOfOperation, String result, String outputFileName, String errorMessage) {
+    public LogRecord(String logFileFolderPath, int totalFiles, List<String> nameOfFiles, String dateOfOperation, String result, String outputFileName, String errorMessage) {
         this.logFileFolderPath = logFileFolderPath;
         this.totalFiles = totalFiles;
         this.nameOfFiles = nameOfFiles;
@@ -22,6 +20,9 @@ public class LogRecord {
         this.result = result;
         this.outputFileName = outputFileName;
         this.errorMessage = errorMessage;
+    }
+
+    public LogRecord() {
     }
 
     public String getLogFileFolderPath() {
@@ -40,11 +41,11 @@ public class LogRecord {
         this.totalFiles = totalFiles;
     }
 
-    public String getNameOfFiles() {
+    public List<String> getNameOfFiles() {
         return nameOfFiles;
     }
 
-    public void setNameOfFiles(String nameOfFiles) {
+    public void setNameOfFiles(List<String> nameOfFiles) {
         this.nameOfFiles = nameOfFiles;
     }
 
