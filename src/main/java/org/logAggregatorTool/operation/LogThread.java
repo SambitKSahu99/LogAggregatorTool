@@ -23,26 +23,31 @@ public class LogThread implements Callable<String> {
         logFilesFolderPath = path;
     }
 
+    /**
+     * This method accepts the logFileFolderPath and passes it for further processing
+     * and then return the message to main thread
+     *
+     * @return
+     * @throws Exception
+     */
     @Override
     public String call() throws Exception {
         List<File> logFileList = null;
         try {
             File[] fileList = (new File(logFilesFolderPath)).listFiles();
             if (fileList.length == 0) throw new RuntimeException(Constants.FILE_NOT_FOUND_MESSAGE);
-            logFileList = Arrays.stream(fileList)
-                    .filter(file -> file.getName().endsWith(Constants.LOG_FILE_EXTENSION))
-                    .toList();
+            logFileList = Arrays.stream(fileList).filter(file -> file.getName().endsWith(Constants.LOG_FILE_EXTENSION)).toList();
             if (logFileList.isEmpty()) throw new RuntimeException(Constants.LOG_FILE_NOT_FOUND_MESSAGE);
             LogFilesProcessor logFilesProcessor = new LogFilesProcessor();
             logFilesProcessor.logOperation(logFileList);
             this.totalFiles = logFileList.size();
             List<String> logFileNames = new ArrayList<>();
-            for(File logFile:logFileList){
+            for (File logFile : logFileList) {
                 logFileNames.add(logFile.getName());
             }
             this.nameOfFiles = logFileNames;
             this.result = Constants.SUCCESS;
-            this.errorMessage="";
+            this.errorMessage = "";
             this.outputFileName = new File(Constants.OUTPUT_FILE_PATH).getName();
             return Constants.SUCCESS_AND_OUTPUT_FILE_PATH_MESSAGE;
         } catch (Exception e) {
@@ -53,7 +58,12 @@ public class LogThread implements Callable<String> {
         }
     }
 
-    public LogRecord auditDataSetter(){
+    /**
+     * sets the log record data and return it to calling method
+     *
+     * @return Returns Log Record Object
+     */
+    public LogRecord auditDataSetter() {
         LogRecord logRecordData = new LogRecord();
         logRecordData.setLogFileFolderPath(this.logFilesFolderPath);
         logRecordData.setTotalFiles(this.totalFiles);

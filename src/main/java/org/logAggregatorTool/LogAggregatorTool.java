@@ -34,6 +34,7 @@ public class LogAggregatorTool {
         LogThread logThread = new LogThread(logFilesFolderPath);
         Future<String> logFuture = logExecutorService.submit(logThread);
         System.out.println(logFuture.get());
+        logExecutorService.shutdown();
 //      Logging Details To Database
         LogRecord logRecordData = logThread.auditDataSetter();
         (new AuditEntry()).auditEntryOperation(logRecordData);

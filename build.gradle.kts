@@ -15,6 +15,9 @@ dependencies {
     implementation(
         "mysql:mysql-connector-java:8.0.28"
     )
+    implementation("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 
 tasks.test {

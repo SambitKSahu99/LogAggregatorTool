@@ -1,6 +1,7 @@
 package org.logAggregatorTool.reader;
 
 import org.logAggregatorTool.utility.Constants;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,8 +14,9 @@ import java.util.Arrays;
 public class LogDataReader {
     /**
      * Reads the log data and extracts timestamp in a list and data into a map
-     * @param logFilesList List Of Log Files
-     * @param timeStampList List Of Timestamp as String
+     *
+     * @param logFilesList     List Of Log Files
+     * @param timeStampList    List Of Timestamp as String
      * @param logTimeToDataMap Map of log data , key:String timestamp , value:String data
      * @throws IOException passes exception object to calling method
      */
