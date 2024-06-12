@@ -15,20 +15,23 @@ import java.util.concurrent.Future;
 public class LogAggregatorTool {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Scanner scanner = new Scanner(System.in);
+        Scanner logFolderPathscanner = new Scanner(System.in);
         System.out.println(Constants.WELCOME_MESSAGE);
         System.out.println(Constants.ENTER_LOG_FILE_FOLDER_PATH_MESSAGE);
         String logFilesFolderPath = "";
 //      Taking user input through command line and validating folderPath
-        String userInput1 = scanner.next();
-        if (Validations.validateFolderPath(userInput1)) {
-            System.out.println(Constants.PROCESSING_MESSAGE);
-            logFilesFolderPath = userInput1;
-        } else {
+        String userInput1 = logFolderPathscanner.next();
+        while(!Validations.validateFolderPath(userInput1)){
             System.out.println(Constants.INVALID_PATH_MESSAGE);
-            logFilesFolderPath = scanner.next();
-            System.out.println(Constants.PROCESSING_MESSAGE);
+            userInput1 = logFolderPathscanner.next();
+            if(userInput1.equalsIgnoreCase(Constants.NO_STRING)) System.exit(0);
+            else if(userInput1.equalsIgnoreCase(Constants.YES_STRING)) {
+                System.out.println(Constants.ENTER_LOG_FILE_FOLDER_PATH_MESSAGE);
+                userInput1 = logFolderPathscanner.next();
+            }
         }
+        logFilesFolderPath = userInput1;
+        System.out.println(Constants.PROCESSING_MESSAGE);
 //      Creating a child thread
         ExecutorService logExecutorService = Executors.newFixedThreadPool(1);
         LogThread logThread = new LogThread(logFilesFolderPath);
@@ -40,3 +43,4 @@ public class LogAggregatorTool {
         (new AuditEntry()).auditEntryOperation(logRecordData);
     }
 }
+

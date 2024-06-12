@@ -10,12 +10,13 @@ import java.sql.PreparedStatement;
 public class AuditEntry {
     /**
      * This method has the database logic to insert run logs to database AUDIT table
+     *
      * @param logRecord LogRecord object which have all the data to be inserted in the database
      */
     public void auditEntryOperation(LogRecord logRecord) {
         String logFileNames = "";
         if (logRecord.getNameOfFiles() != null) logFileNames = String.join(",", logRecord.getNameOfFiles());
-        try (Connection logConnection = DriverManager.getConnection(JdbcConstants.URL, JdbcConstants.USER_NAME, JdbcConstants.PASSWORD)){
+        try (Connection logConnection = DriverManager.getConnection(JdbcConstants.URL, JdbcConstants.USER_NAME, JdbcConstants.PASSWORD)) {
             PreparedStatement logPreparedStatement = logConnection.prepareStatement(JdbcConstants.SQL_INSERT_AUDIT_DATA_QUERY);
             logPreparedStatement.setString(1, logRecord.getLogFileFolderPath());
             logPreparedStatement.setInt(2, logRecord.getTotalFiles());
@@ -28,6 +29,6 @@ public class AuditEntry {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
+

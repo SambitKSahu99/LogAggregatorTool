@@ -3,8 +3,10 @@ package org.logAggregatorTool.utility;
 public class Constants {
 
     public static final String WELCOME_MESSAGE = "**** Log Aggregator Tool ****";
+    public static final String NO_STRING = "no";
+    public static final String YES_STRING = "yes";
     public static final String ENTER_LOG_FILE_FOLDER_PATH_MESSAGE ="Please enter the folder path where log files are located :";
-    public static final String INVALID_PATH_MESSAGE = "\nInvalid Path , Please enter correct path : ";
+    public static final String INVALID_PATH_MESSAGE = "\nYou entered an invalid path, If you wish to continue type Yes or type No";
     public static final String PROCESSING_MESSAGE = "Processing.....";
     public static final String OUTPUT_FILE_PATH = "C:\\Users\\sambit.sahu\\Resources\\DemoFolder\\OutputFile.txt";
     public static final String DATE_PATTERN = "^[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[01]).*";
@@ -17,3 +19,4 @@ public class Constants {
     public static final String SUCCESS = "Success";
     public static final String FAILURE = "Failure";
 }
+

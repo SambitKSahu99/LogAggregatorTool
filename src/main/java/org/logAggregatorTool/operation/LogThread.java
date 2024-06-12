@@ -27,8 +27,8 @@ public class LogThread implements Callable<String> {
      * This method accepts the logFileFolderPath and passes it for further processing
      * and then return the message to main thread
      *
-     * @return
-     * @throws Exception
+     * @return Returns failure or success message to main thread
+     * @throws Exception To main thread
      */
     @Override
     public String call() throws Exception {
@@ -75,4 +75,5 @@ public class LogThread implements Callable<String> {
         return logRecordData;
     }
 }
+
 
