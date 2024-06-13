@@ -1,6 +1,6 @@
 package org.logAggregatorTool.writer;
 
-import org.logAggregatorTool.utility.Constants;
+import org.logAggregatorTool.constants.LogAggregatorToolConstants;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,11 +17,11 @@ public class LogDataWriter {
      * @param logTimeToDataMap    Key : TimeStamp as String , Value : LogData as List<String>
      */
     public void writeProcessedLogData(List<String> sortedTimeStampList, Map<String, List<String>> logTimeToDataMap) throws IOException {
-        String timeStamp = "";
-        try (BufferedWriter logWriter = new BufferedWriter(new FileWriter(Constants.OUTPUT_FILE_PATH))) {
+        String timeStamp = LogAggregatorToolConstants.EMPTY_STRING;
+        try (BufferedWriter logWriter = new BufferedWriter(new FileWriter(LogAggregatorToolConstants.OUTPUT_FILE_PATH))) {
             for (String timeStampData : sortedTimeStampList) {
                 if (!timeStamp.equals(timeStampData)) {
-                    String logData = "";
+                    String logData;
                     timeStamp = timeStampData;
                     List<String> logValues = logTimeToDataMap.get(timeStampData);
                     for (String logValue : logValues) {
@@ -34,5 +34,3 @@ public class LogDataWriter {
         }
     }
 }
-
-

@@ -6,11 +6,13 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * This class consists the data to be inserted in the columns of AUDIT table
+ */
 @NoArgsConstructor
 @Getter
 @Setter
-public class LogRecord {
-
+public class LogAggregatorAuditData {
     String logFileFolderPath;
     int totalFiles;
     List<String> nameOfFiles;
@@ -19,5 +21,3 @@ public class LogRecord {
     String outputFileName;
     String errorMessage;
 }
-
-

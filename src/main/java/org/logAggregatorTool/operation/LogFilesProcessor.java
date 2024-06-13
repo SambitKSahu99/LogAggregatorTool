@@ -1,16 +1,15 @@
 package org.logAggregatorTool.operation;
 
-import org.logAggregatorTool.reader.LogDataReader;
+import org.logAggregatorTool.reader.LogFileReader;
 import org.logAggregatorTool.writer.LogDataWriter;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 public class LogFilesProcessor {
     /**
@@ -22,14 +21,11 @@ public class LogFilesProcessor {
      */
     public void logOperation(List<File> logFileList) throws IOException {
         Map<String, List<String>> logTimeToDataMap = new HashMap<>();
-        List<String> timeStampList = new ArrayList<>();
-        LogDataReader logDataReader = new LogDataReader();
-        logDataReader.readLogFileData(logFileList, timeStampList, logTimeToDataMap);
-        Collections.sort(timeStampList);
+        List<String> timeStampsList = new ArrayList<>();
+        LogFileReader logFileReader = new LogFileReader();
+        logFileReader.readLogFileData(logFileList, timeStampsList, logTimeToDataMap);
+        Collections.sort(timeStampsList);
         LogDataWriter logDataWriter = new LogDataWriter();
-        logDataWriter.writeProcessedLogData(timeStampList, logTimeToDataMap);
+        logDataWriter.writeProcessedLogData(timeStampsList, logTimeToDataMap);
     }
 }
-
-
-
