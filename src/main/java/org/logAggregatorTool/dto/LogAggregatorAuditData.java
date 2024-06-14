@@ -13,11 +13,11 @@ import java.util.List;
 @Getter
 @Setter
 public class LogAggregatorAuditData {
-    String logFileFolderPath;
-    int totalFiles;
-    List<String> nameOfFiles;
-    String dateOfOperation;
-    String result;
-    String outputFileName;
-    String errorMessage;
+    private String logFileFolderPath;
+    private int totalFiles;
+    private List<String> nameOfFiles;
+    private String dateOfOperation;
+    private String result;
+    private String outputFileName;
+    private String errorMessage;
 }

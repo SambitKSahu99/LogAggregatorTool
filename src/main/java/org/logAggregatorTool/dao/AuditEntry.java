@@ -15,8 +15,8 @@ public class AuditEntry {
      * @param logAggregatorAuditData LogRecord object which have all the data to be inserted in the database
      */
     public void auditEntryOperation(LogAggregatorAuditData logAggregatorAuditData) {
-        String logFileNames = LogAggregatorToolConstants.EMPTY_STRING;
-        if (logAggregatorAuditData.getNameOfFiles() != null) logFileNames = String.join(DatabaseConstants.COMMA_VALUE, logAggregatorAuditData.getNameOfFiles());
+        String logFileNames = LogAggregatorToolConstants.DEFAULT_STRING_VALUE;
+        if (logAggregatorAuditData.getNameOfFiles() != null) logFileNames = String.join(LogAggregatorToolConstants.COMMA_VALUE, logAggregatorAuditData.getNameOfFiles());
         try (Connection logConnection = DriverManager.getConnection(DatabaseConstants.URL, DatabaseConstants.USER_NAME, DatabaseConstants.PASSWORD)) {
             PreparedStatement logPreparedStatement = logConnection.prepareStatement(DatabaseConstants.SQL_INSERT_AUDIT_DATA_QUERY);
             logPreparedStatement.setString(1, logAggregatorAuditData.getLogFileFolderPath());
@@ -29,7 +29,7 @@ public class AuditEntry {
             logPreparedStatement.executeUpdate();
             logPreparedStatement.close();
         } catch (Exception exception) {
-            System.out.println(DatabaseConstants.DATABASE_EXCEPTION_MESSAGE+exception.getMessage());
+            System.out.println(LogAggregatorToolConstants.DATABASE_EXCEPTION_MESSAGE+exception.getMessage());
             exception.printStackTrace();
         }
     }

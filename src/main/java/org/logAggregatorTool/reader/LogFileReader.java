@@ -17,33 +17,33 @@ public class LogFileReader {
      *
      * @param logFilesList     List Of Log Files
      * @param timeStampList    List Of Timestamp as String
-     * @param logTimeToDataMap Map of log data , key:String timestamp , value:String data
+     * @param logDateTimeToDataMap Map of log data , key:String timestamp , value:String data
      * @throws IOException passes exception object to calling method
      */
-    public void readLogFileData(List<File> logFilesList, List<String> timeStampList, Map<String, List<String>> logTimeToDataMap) throws IOException {
+    public void readLogFileData(List<File> logFilesList, List<String> timeStampList, Map<String, List<String>> logDateTimeToDataMap) throws IOException {
         boolean checkLogData = false;
         for (File logFile : logFilesList) {
             String filePath = String.valueOf(logFile);
             try (BufferedReader logReader = new BufferedReader(new FileReader(filePath))) {
-                String logTimeStampKey = LogAggregatorToolConstants.EMPTY_STRING;
-                String logMessageValue = LogAggregatorToolConstants.EMPTY_STRING;
-                boolean check = false;
+                String logTimeStampKey = LogAggregatorToolConstants.DEFAULT_STRING_VALUE;
+                String logMessageValue = LogAggregatorToolConstants.DEFAULT_STRING_VALUE;
+                boolean isLogTimeStampAndLogDataSet = false;
                 String logDataLine = null;
                 while ((logDataLine = logReader.readLine()) != null) {
                     checkLogData = true;
-                    if (logDataLine.matches(LogAggregatorToolConstants.DATE_REGEX_PATTERN) && check) {
-                        if (!logTimeToDataMap.containsKey(logTimeStampKey))
-                            logTimeToDataMap.put(logTimeStampKey, new ArrayList<>(Arrays.asList(logMessageValue)));
-                        else logTimeToDataMap.get(logTimeStampKey).add(logMessageValue);
+                    if (logDataLine.matches(LogAggregatorToolConstants.DATE_REGEX_PATTERN) && isLogTimeStampAndLogDataSet) {
+                        if (!logDateTimeToDataMap.containsKey(logTimeStampKey))
+                            logDateTimeToDataMap.put(logTimeStampKey, new ArrayList<>(Arrays.asList(logMessageValue)));
+                        else logDateTimeToDataMap.get(logTimeStampKey).add(logMessageValue);
                         timeStampList.add(logTimeStampKey);
                     }
                     if (!logDataLine.matches(LogAggregatorToolConstants.DATE_REGEX_PATTERN)) {
                         logMessageValue += logDataLine;
                         continue;
                     }
-                        logTimeStampKey = logDataLine.substring(LogAggregatorToolConstants.DEFAULT_INT_VALUE, LogAggregatorToolConstants.SUBSTRING_END_INDEX);
-                        logMessageValue = logDataLine.substring(LogAggregatorToolConstants.SUBSTRING_END_INDEX);
-                    check = true;
+                    logTimeStampKey = logDataLine.substring(LogAggregatorToolConstants.DEFAULT_INT_VALUE, LogAggregatorToolConstants.SUBSTRING_END_INDEX);
+                    logMessageValue = logDataLine.substring(LogAggregatorToolConstants.SUBSTRING_END_INDEX);
+                    isLogTimeStampAndLogDataSet = true;
                 }
             }
         }

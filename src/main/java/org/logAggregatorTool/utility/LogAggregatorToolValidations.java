@@ -16,12 +16,12 @@ public class LogAggregatorToolValidations {
     }
 
     /**
-     * This method will check if the file is a log file with .log extension
+     * This method will check if the fileToBeChecked is a log fileToBeChecked with .log extension
      *
-     * @param file File present in the folder
+     * @param fileToBeChecked File present in the folder
      * @return boolean value according to condition
      */
-    public static boolean isValidLogFile(File file) {
-        return file.getName().endsWith(LogAggregatorToolConstants.LOG_FILE_EXTENSION);
+    public static boolean isValidLogFile(File fileToBeChecked) {
+        return fileToBeChecked.getName().endsWith(LogAggregatorToolConstants.LOG_FILE_EXTENSION);
     }
 }
