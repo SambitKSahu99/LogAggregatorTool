@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14115790-b0a0-4041-9009-ca7e5543eef2" name="Changes" comment="Created New Project">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorDemo/LogAggregatorTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/LogAggregatorTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/LogAggregatorTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/dao/AuditEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/dao/AuditEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/dto/LogRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/dto/LogRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/operation/LogFilesProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/operation/LogFilesProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/operation/LogThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/operation/LogThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/reader/LogDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/reader/LogDataReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/utility/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/utility/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/utility/JdbcConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/utility/JdbcConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/utility/Validations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/utility/Validations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/writer/LogDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/logAggregatorTool/writer/LogDataWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,18 +62,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "SambitKSahu99"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SambitKSahu99&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/SambitKSahu99/LogAggregatorTool.git",
-    "accountId": "a4a9c687-523d-4f90-b78b-ef8bdc1c360f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SambitKSahu99/LogAggregatorTool.git&quot;,
+    &quot;accountId&quot;: &quot;a4a9c687-523d-4f90-b78b-ef8bdc1c360f&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -78,18 +85,20 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.LogAggregatorTool.executor": "Run",
+    "Gradle.Build LogAggregatorTool.executor": "Run",
     "Gradle.LogAggregatorTool [:LogAggregatorTool.main()].executor": "Run",
     "Gradle.LogAggregatorTool [:Main.main()].executor": "Run",
     "Gradle.LogAggregatorTool [build].executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "sambitLogAggregator",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/sambit.sahu/Projects/LogAggregatorTool",
     "onboarding.tips.debug.path": "C:/Users/sambit.sahu/IdeaProjects/LogAggregatorTool/src/main/java/org/example/Main.java"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.LogAggregatorTool">
+  <component name="RunManager" selected="Application.org.logAggregatorTool.LogAggregatorTool">
     <configuration name="LogAggregatorTool" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.logAggregatorDemo.LogAggregatorTool" />
       <module name="LogAggregatorTool.main" />
@@ -97,6 +106,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.logAggregatorDemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.logAggregatorTool.LogAggregatorTool" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.logAggregatorTool.LogAggregatorTool" />
+      <module name="LogAggregatorTool.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.logAggregatorTool.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -149,15 +171,17 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.org.logAggregatorTool.LogAggregatorTool" />
       <item itemvalue="Application.LogAggregatorTool" />
       <item itemvalue="Gradle.LogAggregatorTool [build]" />
       <item itemvalue="Gradle.LogAggregatorTool [clean]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.org.logAggregatorTool.LogAggregatorTool" />
+        <item itemvalue="Application.LogAggregatorTool" />
         <item itemvalue="Gradle.LogAggregatorTool [build]" />
         <item itemvalue="Gradle.LogAggregatorTool [clean]" />
-        <item itemvalue="Application.LogAggregatorTool" />
       </list>
     </recent_temporary>
   </component>
