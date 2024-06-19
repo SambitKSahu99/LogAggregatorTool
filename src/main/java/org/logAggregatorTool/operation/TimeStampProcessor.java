@@ -11,15 +11,17 @@ import java.util.List;
 
 public class TimeStampProcessor {
 
-    public final List<SimpleDateFormat> POSSIBLE_DATE_FORMATS = Arrays.asList(new SimpleDateFormat(LogAggregatorToolConstants.POSSIBLE_DATE_FORMAT_1), new SimpleDateFormat(LogAggregatorToolConstants.POSSIBLE_DATE_FORMAT_2));
+    public final List<SimpleDateFormat> POSSIBLE_DATE_FORMATS = Arrays.asList(new SimpleDateFormat(LogAggregatorToolConstants.YYYY_MM_DD_DATE_FORMAT), new SimpleDateFormat(LogAggregatorToolConstants.MM_DD_YYYY_DATE_FORMAT));
 
     public Date parsingTimeStamp(String timeStamp) {
-        for (SimpleDateFormat possibleDateFormat : POSSIBLE_DATE_FORMATS) {
-            try {
-                return possibleDateFormat.parse(timeStamp);
-            } catch (ParseException parseException) {
-//                System.out.println(LogAggregatorToolConstants.PARSING_TIMESTAMP_ERROR);
+        try {
+            if (timeStamp.indexOf(LogAggregatorToolConstants.FORWARD_SLASH) == LogAggregatorToolConstants.INT_VALUE_TWO) {
+                return POSSIBLE_DATE_FORMATS.get(LogAggregatorToolConstants.INT_VALUE_ONE).parse(timeStamp);
+            } else {
+                return POSSIBLE_DATE_FORMATS.get(LogAggregatorToolConstants.DEFAULT_INT_VALUE).parse(timeStamp);
             }
+        } catch (ParseException parseException) {
+            System.out.println(LogAggregatorToolConstants.PARSING_TIMESTAMP_ERROR);
         }
         return new Date(LogAggregatorToolConstants.DEFAULT_INT_VALUE);
     }
