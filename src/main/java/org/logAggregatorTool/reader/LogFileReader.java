@@ -31,13 +31,14 @@ public class LogFileReader {
                 String logDataLine = null;
                 while ((logDataLine = logReader.readLine()) != null) {
                     checkLogData = true;
-                    if (logDataLine.matches(LogAggregatorToolConstants.DATE_REGEX_PATTERN) && isLogTimeStampAndLogDataSet) {
+                    boolean checkTimeStampFormat = (logDataLine.matches(LogAggregatorToolConstants.YEAR_MONTH_DATE_REGEX_PATTERN)) || (logDataLine.matches(LogAggregatorToolConstants.MONTH_DATE_YEAR_REGEX_PATTERN));
+                    if (checkTimeStampFormat && isLogTimeStampAndLogDataSet) {
                         if (!logDateTimeToDataMap.containsKey(logTimeStampKey))
                             logDateTimeToDataMap.put(logTimeStampKey, new ArrayList<>(Arrays.asList(logMessageValue)));
                         else logDateTimeToDataMap.get(logTimeStampKey).add(logMessageValue);
                         timeStampList.add(logTimeStampKey);
                     }
-                    if (!logDataLine.matches(LogAggregatorToolConstants.DATE_REGEX_PATTERN)) {
+                    if (!checkTimeStampFormat) {
                         logMessageValue += logDataLine;
                         continue;
                     }

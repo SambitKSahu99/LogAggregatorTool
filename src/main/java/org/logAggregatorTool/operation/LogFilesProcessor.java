@@ -24,7 +24,7 @@ public class LogFilesProcessor {
         List<String> timeStampsList = new ArrayList<>();
         LogFileReader logFileReader = new LogFileReader();
         logFileReader.readLogFileData(logFileList, timeStampsList, logTimeToDataMap);
-        Collections.sort(timeStampsList);
+        (new TimeStampProcessor()).sortTimeStamp(timeStampsList);
         LogDataWriter logDataWriter = new LogDataWriter();
         logDataWriter.writeProcessedLogData(timeStampsList, logTimeToDataMap);
     }

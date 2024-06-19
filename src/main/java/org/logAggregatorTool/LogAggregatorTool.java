@@ -46,10 +46,10 @@ public class LogAggregatorTool {
         Scanner logFolderPathScanner = new Scanner(System.in);
         System.out.println(LogAggregatorToolConstants.WELCOME_MESSAGE);
         System.out.println(LogAggregatorToolConstants.ENTER_LOG_FILE_FOLDER_PATH_MESSAGE);
-        String logFilesFolderPathUserInput = logFolderPathScanner.next();
+        String logFilesFolderPathUserInput = logFolderPathScanner.nextLine().trim();
         while (!LogAggregatorToolValidations.isValidFolderPath(logFilesFolderPathUserInput)) {
             System.out.println(LogAggregatorToolConstants.INVALID_PATH_MESSAGE);
-            logFilesFolderPathUserInput = logFolderPathScanner.next();
+            logFilesFolderPathUserInput = logFolderPathScanner.nextLine().trim();
             if (logFilesFolderPathUserInput.equalsIgnoreCase(LogAggregatorToolConstants.USER_PERMISSION_N)) {
                 System.out.println(LogAggregatorToolConstants.EXIT_MESSAGE);
                 logAggregatorAuditData.setLogFileFolderPath(LogAggregatorToolConstants.DEFAULT_STRING_VALUE);
